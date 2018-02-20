@@ -1,0 +1,14 @@
+.jumbotron-fluid {
+	background-image:url("../images/jumbo-food2.jpg");
+	background-repeat:no-repeat; 
+	background-size:cover;
+}
+
+.jumboCenter {
+	text-align: center;
+}
+
+.whiteText {
+	color: white;
+}
+

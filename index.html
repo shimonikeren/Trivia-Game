@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Trvia Game</title>
+	<script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+	<script type="text/javascript" src="assets/javascript/app.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+</head>
+<body>
+
+<div class="jumbotron jumbotron-fluid">
+	<div class="container">
+		<h1 class="display-4 jumboCenter whiteText">Food Triva</h1>
+		<p class="lead jumboCenter"><a class="btn btn-light start">Click here to start!</a></p> 
+		<!--click here to start game-->
+	</div>
+</div>
+
+
+
+<div class="container">
+	<div class="row">
+		<div class="col-sm-4">
+			<div class="card">
+				<div class="card-body">
+					<h5 class="card-title">Timer</h5>
+					<p class="card-text"> You have 30 seconds to answer each question. Good luck!</p>
+					<p class="card-text" id="timer"></p> <!--js timer will appear here when botton clicked-->
+					<p class="card-text" id="timeEnd">Timer: </p> 
+				</div>
+			</div>
+		</div>
+
+
+		<div class="col-sm-4">
+			<div class="card">
+				<div class="card-body">
+					<h5 class="card-title">Question</h5> 
+					<p class="card-text" id="questionSpot"></p> <!--question to appear here-->
+					<p class="card-text"></p>
+					<a href="#" class="btn btn-secondary btn-block buttonchoice" id="choiceA" value="A"> A </a> 
+					<a href="#" class="btn btn-secondary btn-block buttonchoice" id="choiceB" value="B"> B </a>
+					<a href="#" class="btn btn-secondary btn-block buttonchoice" id="choiceC" value="C"> C </a>
+					<a href="#" class="btn btn-secondary btn-block buttonchoice" id="choiceD" value="D"> D </a> 
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-4">
+			<div class="card">
+			<div class="card-body">
+				<h5 class="card-title resultTitle">Result</h5>
+				<!--result, correct answer, score, and eventual restart button here-->
+				<p class="card-text" id="correctAnswers">Correct Answers: </p>
+				<p class="card-text" id="incorrectAnswers">Incorrect Answers: </p>
+				<p class="card-text" id="unanswered">Unanswered Questions: </p>
+			</div>
+		</div>
+		</div>
+	</div>
+</div>
+
+</body>
+</html>
