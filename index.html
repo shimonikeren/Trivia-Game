@@ -26,7 +26,7 @@
 					<h2 class="card-title">Timer</h2>
 					<p class="card-text"> You have 30 seconds to answer each question. Good luck!</p>
 					<p class="card-text" id="timer"></p> <!--js timer will appear here when botton clicked-->
-					<p id="timeEnd">You ran out of time! Try the next question!</p> <!--hidden, will appear when timer ends in js-->
+					<!-- <p id="timeEnd">You ran out of time! Try the next question!</p> <!--hidden, will appear when timer ends in js--> 
 				</div>
 			</div>
 		</div>
@@ -55,7 +55,6 @@
 				<img src="assets/images/kaleNo.jpg" height="200px" width="200px" id="wrongImg"> <!--hidden until called-->
 				<img src="assets/images/avo.jpg" height="200px" width="200px" id="correctImg"> <!--hidden until called-->
 				<img src="assets/images/thyme.jpg" height="200px" width="200px" id="timeImg"> <!--hidden until called-->
-				<!--result, correct answer, score, and eventual restart button here-->
 				<p class="card-text" id="correctAnswers">Correct Answers: </p>
 				<p class="card-text" id="incorrectAnswers">Incorrect Answers: </p>
 				<p class="card-text" id="unanswered">Unanswered Questions: </p>
@@ -66,11 +65,11 @@
 		</div>
 
 		<div class="col-sm-4">
-			<div class="card hiddenCard">
+			<div class="card hiddenFinalCard">
 			<div class="card-body">
 				<h2 class="card-title resultTitle">Results</h2>
-				<p class="card-text" id="finalResult"></p>
-				<a href="#" class="btn btn-secondary btn-block" id="restart">Restart</a> <!--restart button-->
+				<p class="card-text" id="finalResult"></p> <!--final result goes here-->
+				<a href="#" class="btn btn-secondary btn-block" id="restart">Play Again!</a> <!--restart button-->
 			</div>
 		</div>
 		</div>

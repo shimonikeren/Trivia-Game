@@ -24,13 +24,12 @@ var questions = [
 $('document').ready(function () {
 
 
-// =================Hidden elements to be rendered when caleld =================
-	$("#timeEnd").hide(); //hidden image to fade in when time runs out 
-	$("#restart").hide(); //hidden restart button, to appear when game over
-	$("#wrongImg").hide(); //hidden image 
-	$("#correctImg").hide(); //hidden image 
-	$("#timeImg").hide(); //hidden image 
-	$(".hiddenCard").hide();
+// =================Hidden elements to be rendered when called =================
+	//$("#restart").hide(); //hidden restart button, to appear when game over
+	$("#wrongImg").hide(); //hidden image to fade in when wrong answer chosen 
+	$("#correctImg").hide(); //hidden image to fase in when correct chosen 
+	$("#timeImg").hide(); //hidden image to fade in when time runs out  
+	$(".hiddenFinalCard").hide();
 	
 // =================Declare Functions =================
 
@@ -64,9 +63,9 @@ $('document').ready(function () {
 
 	function renderQuestions() { //function to renderQuestion from questions array 
 		if (pos >=questions.length) { //run this line once last question is answered 
-			$("#finalResult").html("You got " + correct + " out of " + questions.length);
-			$(".resultCard").replaceWith($(".hiddenCard"));
-			$(".hiddenCard").fadeIn(100);
+			$("#finalResult").html("You got " + correct + " questions correct out of " + questions.length + " questions.");
+			$(".resultCard").replaceWith($(".hiddenFinalCard"));
+			$(".hiddenFinalCard").fadeIn(100);
 			$("#restart").fadeIn(500);
 			pos = 0;
 			correct = 0;
