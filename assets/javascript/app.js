@@ -19,9 +19,20 @@ var questions = [
 	["where is PIZZA from?", "England", "ITALY", "USA", "Japan", "B"]
 ];
 
-// =================Declare Functions =================
+// =================Document Ready=================
 
 $('document').ready(function () {
+
+
+// =================Hidden elements to be rendered when caleld =================
+	$("#timeEnd").hide(); //hidden image to fade in when time runs out 
+	$("#restart").hide(); //hidden restart button, to appear when game over
+	$("#wrongImg").hide(); //hidden image 
+	$("#correctImg").hide(); //hidden image 
+	$("#timeImg").hide(); //hidden image 
+	$(".hiddenCard").hide();
+	
+// =================Declare Functions =================
 
 	function runTimer() { //function to run a timer, decrease by 1 second 
 		timerInterval = setInterval(decrement, 1000);
@@ -29,14 +40,15 @@ $('document').ready(function () {
 
 	function decrement() { //function for seconds decreasing by 1  
 		number--;
-		$("#timer").html("<h2>" + number + "</h2>");
+		$("#timer").html(number + " Seconds");
 		if (number === 0) {
 			timesUp();
 		}
 	}
 
 	function timesUp() { //function checks when time is up, then run this function 
-		$("#timeEnd").html("Timer: You ran out of time! Try Again!").css('color', 'red');
+  		$("#timeImg").fadeIn(500);
+  		$("#timeImg").fadeOut(2000);
 		$("#unanswered").text("Unanswered Questions: " + unanswered++);
 		clearInterval(timerInterval);
 		pos++; //next question
@@ -52,7 +64,10 @@ $('document').ready(function () {
 
 	function renderQuestions() { //function to renderQuestion from questions array 
 		if (pos >=questions.length) { //run this line once last question is answered 
-			$("#finalResult").html("score " + correct + " out of " + questions.length);
+			$("#finalResult").html("You got " + correct + " out of " + questions.length);
+			$(".resultCard").replaceWith($(".hiddenCard"));
+			$(".hiddenCard").fadeIn(100);
+			$("#restart").fadeIn(500);
 			pos = 0;
 			correct = 0;
 			return false; //this stops questions from rendering once last question hit
@@ -75,11 +90,15 @@ $('document').ready(function () {
 		$('.buttonchoice').on('click', function () {
 			var chosen = $(this).attr('value');
 			if (chosen == questions[pos][5]){
+				$("#correctImg").fadeIn(500);
+  				$("#correctImg").fadeOut(2000);
 				correct++;
 				$("#correctAnswers").text("Correct Answers: " + correct);
 				reset();
 			} 
 			else if (chosen !== questions[pos][5]){
+				$("#wrongImg").fadeIn(500);
+  				$("#wrongImg").fadeOut(2000);
 				incorrect++;
 				$("#incorrectAnswers").text("Incorrect Answers: " + incorrect);
 				reset();

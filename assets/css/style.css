@@ -12,3 +12,15 @@
 	color: white;
 }
 
+.card {
+	border: 0;
+}
+
+#timeEnd {
+	color: red;
+}
+
+#timer {
+	font-size: 50px;
+}
+
