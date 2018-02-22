@@ -47,7 +47,7 @@ $('document').ready(function () {
 
 	function timesUp() { //function checks when time is up, then run this function 
   		$("#timeImg").fadeIn(500);
-  		$("#timeImg").fadeOut(2000);
+  		$("#timeImg").fadeOut(1500);
 		$("#unanswered").text("Unanswered Questions: " + unanswered++);
 		clearInterval(timerInterval);
 		pos++; //next question
@@ -65,8 +65,7 @@ $('document').ready(function () {
 		if (pos >=questions.length) { //run this line once last question is answered 
 			$("#finalResult").html("You got " + correct + " questions correct out of " + questions.length + " questions.");
 			$(".resultCard").replaceWith($(".hiddenFinalCard"));
-			$(".hiddenFinalCard").fadeIn(100);
-			$("#restart").fadeIn(500);
+			$(".hiddenFinalCard").fadeIn(1000);
 			pos = 0;
 			correct = 0;
 			return false; //this stops questions from rendering once last question hit
@@ -90,14 +89,14 @@ $('document').ready(function () {
 			var chosen = $(this).attr('value');
 			if (chosen == questions[pos][5]){
 				$("#correctImg").fadeIn(500);
-  				$("#correctImg").fadeOut(2000);
+  				$("#correctImg").fadeOut(1500);
 				correct++;
 				$("#correctAnswers").text("Correct Answers: " + correct);
 				reset();
 			} 
 			else if (chosen !== questions[pos][5]){
 				$("#wrongImg").fadeIn(500);
-  				$("#wrongImg").fadeOut(2000);
+  				$("#wrongImg").fadeOut(1500);
 				incorrect++;
 				$("#incorrectAnswers").text("Incorrect Answers: " + incorrect);
 				reset();
