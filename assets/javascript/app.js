@@ -61,6 +61,17 @@ $('document').ready(function () {
 		runTimer();
 	}
 
+	function restartGame(){ //restarts game when restart button clicked 
+		$("#restart").on("click", function(){
+			clearInterval(timerInterval);
+			reset();
+			$("#timer").fadeIn(500);
+			renderQuestions();
+			checkAnswers();
+			$(".hiddenFinalCard").replaceWith($(".resultCard"));
+			$(".resultCard").fadeIn(1000);
+		});
+	}
 	function renderQuestions() { //function to renderQuestion from questions array 
 		if (pos >=questions.length) { //run this line once last question is answered 
 			$("#finalResult").html("You got " + correct + " questions correct out of " + questions.length + " questions.");
@@ -68,8 +79,11 @@ $('document').ready(function () {
 			$(".hiddenFinalCard").fadeIn(1000);
 			pos = 0;
 			correct = 0;
-			return false; //this stops questions from rendering once last question hit
-			$("#timer").hide();
+			clearInterval(timerInterval);//stops timer 
+			$("#timer").hide();//hides timer div
+			$(".buttonchoice").off("click");//turns off on click events
+			restartGame();
+			return false; //this exits the function 
 		}
 		question = questions[pos][0];
 		chA = questions[pos][1];
@@ -107,7 +121,7 @@ $('document').ready(function () {
 		});
 	}
 
-//=================Functions to run when start button clicked=================
+//=================onclick events=================
 
 	$(".start").on("click", function(){
 		runTimer();
@@ -120,3 +134,4 @@ $('document').ready(function () {
 
 }); //document ready ends here
 
+		
