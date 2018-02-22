@@ -8,10 +8,16 @@ var pos = 0,
 	test, question, choice, choices, chA, chB, chC, chD, correct = 0;
 var questions = [
 //multidimensional array: each formatted as follows: [question, chA(choiceA), chB, chC, chD, answer]
-	["where is dijon from?", "England", "France", "USA", "Japan", "B"],
-	["what is yummiest?", "Chocolate", "Celery", "cucumber", "corn", "A"],
-	["Does pizza have cheese?", "no", "never", "nope", "yes", "D"],
-	["where is PIZZA from?", "England", "ITALY", "USA", "Japan", "B"]
+	// ["Dijon mustand originated in the city of Dijon, located in what country?", "England", "France", "USA", "Japan", "B"],
+	// ["<i>Granny Smith</i> is a popular type of which fruit?", "Pear", "Orange", "Apple", "Grape", "C"],
+	// ["What common kitchen item is made up of sodium and chlorine atoms?", "Pepper", "Vinegar", "Olive Oil", "Salt", "D"],
+	// ["Roquefort is a French blue cheese made from the milk of what animal?", "Sheep", "Goat", "Pig", "Cow", "A"],
+	// ["What is the colloquial term for a rotating tray often often placed on a table to aid in distributing food?", "Tired Susana", "Lazy Susan", "Lazy Jane", "Spinning Sally", "B"],
+	// ["Traditionally, the term <i>caviar</i> refers to the salt-cured roe of which fish?", "Sturgeon", "Trout", "Salmon", "Halibut", "A"],
+	// ["What is the main ingredient in thousand island dressing?", "Olive Oil", "Vinegar", "Mayonaise", "Relish", "C"],
+	["In which country did cheddar cheese originate?", "England", "France", "USA", "Japan", "A"],
+	["Sriracha is type of hot sauce named after a city located in what country?", "France", "Canada", "Thailand", "Japan", "C"],
+	["Champagne is a sparkling wine made from grapes grown in the Champagne region of which country?", "France", "Canada", "Thailand", "Japan", "A"]
 ];
 
 // =================Document Ready=================
@@ -21,7 +27,6 @@ $('document').ready(function () {
 
 // =================Hidden elements to be rendered when called =================
 
-	//$("#restart").hide(); //hidden restart button, to appear when game over
 	$("#wrongImg").hide(); //hidden image to fade in when wrong answer chosen 
 	$("#correctImg").hide(); //hidden image to fase in when correct chosen 
 	$("#timeImg").hide(); //hidden image to fade in when time runs out  
@@ -57,23 +62,36 @@ $('document').ready(function () {
 		runTimer();
 	}
 
-	function restartGame(){ //restarts game when restart button clicked 
-		//so far parts of this are working. 
-		//need: to get the original resultCard to display again 
+
+	var resultCard = $(".resultCard");
+	var hiddenFinalCard = $(".hiddenFinalCard");
+
+	function restartGame(){ //restarts game when restart button clicked after game is over
 		$("#restart").on("click", function(){
 			clearInterval(timerInterval);
-			reset();
-			$("#timer").fadeIn(500);
-			renderQuestions();
-			checkAnswers();
-			$(".hiddenFinalCard").replaceWith($(".resultCard"));
+			reset(); //resets time 
+			$("#timer").fadeIn(500); //bring back timer 
+			$(".hiddenFinalCard").replaceWith(resultCard); //bring back original resultCard
 			$(".resultCard").fadeIn(1000);
+			$("#wrongImg").hide();  //rehide images
+			$("#correctImg").hide(); 
+			$("#timeImg").hide();
+			correct = 0; //reset answers 
+			$("#correctAnswers").text("Correct Answers:"); //display blank answers
+			incorrect = 0;
+			$("#incorrectAnswers").text("Incorrect Answers:");
+			unanswered = 0;
+			$("#unanswered").text("Unanswered Questions: ");
+			renderQuestions(); 
+			checkAnswers();
 		});
 	}
+
+
 	function renderQuestions() { //function to renderQuestion from questions array 
 		if (pos >=questions.length) { //run this line once last question is answered 
 			$("#finalResult").html("You got " + correct + " questions correct out of " + questions.length + " questions.");
-			$(".resultCard").replaceWith($(".hiddenFinalCard"));
+			$(".resultCard").replaceWith(hiddenFinalCard);
 			$(".hiddenFinalCard").fadeIn(1000);
 			pos = 0;
 			correct = 0;
